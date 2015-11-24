@@ -28,9 +28,20 @@ def results():
     """
     q= session["question"]
     results = google.search(q,num=10,start=0,stop=10)
+    #Normalize the question's case
+    q.upper()
+    #Create rlist that holds all the urls
     rlist = []
     for r in results:
         rlist.append(r)
+    #If the question is a who question
+    if "WHO" in q:
+        for x in rlist.count():
+            url = urllib2.urlopen(rlist[x])
+            page = url.read()
+            soup = bs4.BeautifulSoup(page, 'html')
+            raw = soup.get_text()
+            #Setup a regular expression to filter names out
     return render_template("results.html", links = rlist)
 
 

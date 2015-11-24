@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+  <title>Query</title>
+</head>
+
+<body>
+  <h1> Ask a Question and find some answers </h1>
+  <form method="POST">
+    Question: <input type="text" name="question">
+    <input type="submit" name="button" value="enter">
+  </form>
+</body>
+</html>
