@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import google, bs4, urllib2, re
 
-url = urllib2.urlopen("https://en.wikipedia.org/wiki/Spider-Man")
+url = urllib2.urlopen("http://www.imdb.com/title/tt0145487/")
 page = url.read()
 soup = bs4.BeautifulSoup(page, 'html')
 raw = soup.get_text()
