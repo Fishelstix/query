@@ -2,6 +2,14 @@
 <head>
   <title>Results</title>
 </head>
+<center>
 <body>
+	<h1>In order from most likely to least likely:</h1>
+<ol>
+	{% for element in stuff %}
+		<li>{{element}}</li>
+	{% endfor %}
+</ol>
+</center>
 </body>
 </html>
