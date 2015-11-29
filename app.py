@@ -3,15 +3,11 @@ import google, bs4, urllib2, re
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 @app.route("/home", methods = ["GET", "POST"])
 
 #Basic home page that allows anyone to submit a question
 def home():
-    """ 
-	Takes a question submitted by the user and redirects to results.
-	Returns a 405 error, method not allowed when trying to submit a question. (Fix?)
-    """
     if request.method== "GET":
 	return render_template("home.html")
     else: 
@@ -29,7 +25,8 @@ def results():
     q= session["question"]
     results = google.search(q,num=10,start=0,stop=10)
     #Normalize the question's case
-    q.upper()
+    q = q.upper()
+    print q
     #Create rlist that holds all the urls
     rlist = []
     for r in results:
