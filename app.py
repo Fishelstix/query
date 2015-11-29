@@ -26,7 +26,6 @@ def results():
     results = google.search(q,num=10,start=0,stop=10)
     #Normalize the question's case
     q = q.upper()
-    print q
     #Create rlist that holds all the urls
     rlist = []
     for r in results:
@@ -47,12 +46,8 @@ def results():
             page = url.read()
             soup = bs4.BeautifulSoup(page, 'html')
             text+= soup.get_text()
-            #Setup a regular expression to filter names out
-            #pattern = "(([A-Z]{1})([a-z]*) ([A-Z]{1})([a-z]*))"
-            #result = re.findall(pattern,raw)
         #Creates the Array of Names
         array_of_stuff= names.names(text,10)
-        print array_of_stuff
     return render_template("results.html", stuff = array_of_stuff)
 
 
