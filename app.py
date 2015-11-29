@@ -38,18 +38,21 @@ def results():
        'Accept-Encoding': 'none',
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
+    # Set up raw which will be the beautful soup string that we send to names
+    text = ""
     #If the question is a who question
     if "WHO" in q:
         for x in rlist:
             url = urllib2.urlopen(urllib2.Request(x,headers=hdr))
             page = url.read()
             soup = bs4.BeautifulSoup(page, 'html')
-            raw = soup.get_text()
+            text+= soup.get_text()
             #Setup a regular expression to filter names out
             #pattern = "(([A-Z]{1})([a-z]*) ([A-Z]{1})([a-z]*))"
             #result = re.findall(pattern,raw)
-            array_of_names = names.names(raw,10)
-            print array_of_names
+        #Creates the Array of Names
+        array_of_names = names.names(text,10)
+        print array_of_names
     return render_template("results.html", links = rlist)
 
 
