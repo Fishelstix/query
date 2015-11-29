@@ -2,7 +2,7 @@ import re
 
 #Takes a beautiful soup string str and an int n, and returns the top n names in str as an array of strings sorted by the number of times each name appears
 def names(str, n):
-    possibleNames = re.findall('(Mr. |Ms. |Mrs. |Dr. )?([A-Z][a-z]+ )([A-Z] |[A-Z]. |[A-Z][a-z]+ )?([A-Z][a-z]+)',txt) #gets all possible names
+    possibleNames = re.findall('(Mr. |Ms. |Mrs. |Dr. )?([A-Z][a-z]+ )([A-Z] |[A-Z]. |[A-Z][a-z]+ )?([A-Z][a-z]+)',str) #gets all possible names
     
     doc = open("names.csv", 'r')
     fN = doc.read().split("\n") #list of well-known first names
